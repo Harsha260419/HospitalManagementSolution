@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="HospitalManagement.Application/HospitalManagement.Application.csproj" />
+  <Project Path="HospitalManagement.ConsoleApp/HospitalManagement.ConsoleApp.csproj" />
+  <Project Path="HospitalManagement.Infrastructure/HospitalManagement.Infrastructure.csproj" />
+  <Project Path="HospitalManagement.MVCApp/HospitalManagement.MVCApp.csproj" />
+  <Project Path="HospitalManagementSolution/HospitalManagement.Domain.csproj" />
+  <Project Path="WebAPI/HospitalManagement.WebAPI.csproj" />
+</Solution>
