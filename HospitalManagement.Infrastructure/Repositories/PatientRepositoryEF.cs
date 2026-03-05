@@ -2,6 +2,9 @@
 using HospitalManagement.Domain.Exceptions;
 using HospitalManagement.Domain.Interfaces;
 using HospitalManagement.Infrastructure.Data;
+using Microsoft.Data.SqlClient;
+using HospitalManagement.Infrastructure.Logging;
+using HospitalManagement.Domain.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,39 +24,83 @@ namespace HospitalManagement.Infrastructure.Repositories
 
         public void Add(Patient patient)
         {
-            _context.Patients.Add(patient);
-            _context.SaveChanges();
+            try
+            {
+                _context.Patients.Add(patient);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex);
+                throw new DatabaseConnectionException("Database error occurred while adding patient.");
+            }
         }
 
         public IEnumerable<Patient> GetAll()
         {
-            return _context.Patients.ToList();
+            try
+            {
+                return _context.Patients.ToList();
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex);
+                throw new DatabaseConnectionException("Database error occurred while fetching patients.");
+            }
         }
 
         public Patient GetById(int id)
         {
-            return _context.Patients.Find(id);
+            try
+            {
+                return _context.Patients.Find(id);
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex);
+                throw new DatabaseConnectionException("Database error occurred while retrieving patient.");
+            }
         }
 
         public void Update(Patient patient)
         {
-            _context.Patients.Update(patient);
+            try
+            {
+                var existingPatient = _context.Patients.Find(patient.PatientId);
 
-            int rows = _context.SaveChanges();
+                if (existingPatient == null)
+                    throw new PatientNotFoundException("Patient not found.");
 
-            if (rows == 0)
-                throw new PatientNotFoundException("Patient not found.");
+                existingPatient.Name = patient.Name;
+                existingPatient.Age = patient.Age;
+                existingPatient.Condition = patient.Condition;
+
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex);
+                throw new DatabaseConnectionException("Database error occurred while updating patient.");
+            }
         }
 
         public void Delete(int id)
         {
-            var patient = _context.Patients.Find(id);
+            try
+            {
+                var patient = _context.Patients.Find(id);
 
-            if (patient == null)
-                throw new PatientNotFoundException("Patient not found.");
+                if (patient == null)
+                    throw new PatientNotFoundException("Patient not found.");
 
-            _context.Patients.Remove(patient);
-            _context.SaveChanges();
+                _context.Patients.Remove(patient);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex);
+                throw new DatabaseConnectionException("Database error occurred while deleting patient.");
+            }
         }
     }
 }

@@ -102,6 +102,40 @@ namespace HospitalManagement.ConsoleApp
                 Console.WriteLine($"{p.PatientId} {p.Name} {p.Condition}");
             }
         }
+
+        static void EditPatient(IPatientService patientService)
+        {
+            Patient patient = new Patient();
+
+            Console.Write("Patient Id: ");
+            patient.PatientId = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("New Name: ");
+            patient.Name = Console.ReadLine();
+
+            Console.Write("New Age: ");
+            patient.Age = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("New Condition: ");
+            patient.Condition = Console.ReadLine();
+
+            patientService.UpdatePatient(patient);
+
+            Console.WriteLine("Patient updated successfully.");
+        }
+
+        static void DeletePatient(IPatientService patientService)
+        {
+            Console.Write("Enter Patient Id: ");
+
+            int id = Convert.ToInt32(Console.ReadLine());
+
+            patientService.DeletePatient(id);
+
+            Console.WriteLine("Patient deleted successfully.");
+        }
+
+
         static void RunMenu(IDoctorService doctorService, IPatientService patientService)
         {
             while (true)
@@ -111,7 +145,10 @@ namespace HospitalManagement.ConsoleApp
                 Console.WriteLine("2 List Doctors");
                 Console.WriteLine("3 Add Patient");
                 Console.WriteLine("4 List Patients");
-                Console.WriteLine("5 Exit");
+                Console.WriteLine("5 Edit Patient");
+                Console.WriteLine("6 Delete Patient");
+                Console.WriteLine("7 Exit");
+
 
                 int choice = Convert.ToInt32(Console.ReadLine());
 
@@ -134,6 +171,14 @@ namespace HospitalManagement.ConsoleApp
                         break;
 
                     case 5:
+                        EditPatient(patientService);
+                        break;
+
+                    case 6:
+                        DeletePatient(patientService);
+                        break;
+
+                    case 7:
                         Console.WriteLine("Exiting program...");
                         return;
                 }
