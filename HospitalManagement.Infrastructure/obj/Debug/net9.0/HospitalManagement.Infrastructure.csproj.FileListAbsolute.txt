@@ -1,0 +1,16 @@
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagement.Infrastructure\bin\Debug\net9.0\HospitalManagement.Infrastructure.deps.json
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagement.Infrastructure\bin\Debug\net9.0\HospitalManagement.Infrastructure.dll
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagement.Infrastructure\bin\Debug\net9.0\HospitalManagement.Infrastructure.pdb
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagement.Infrastructure\bin\Debug\net9.0\HospitalManagement.Domain.dll
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagement.Infrastructure\bin\Debug\net9.0\HospitalManagement.Domain.pdb
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagement.Infrastructure\obj\Debug\net9.0\HospitalManagement.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagement.Infrastructure\obj\Debug\net9.0\HospitalManagement.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagement.Infrastructure\obj\Debug\net9.0\HospitalManagement.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagement.Infrastructure\obj\Debug\net9.0\HospitalManagement.Infrastructure.AssemblyInfo.cs
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagement.Infrastructure\obj\Debug\net9.0\HospitalManagement.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagement.Infrastructure\obj\Debug\net9.0\HospitalManagement.Infrastructure.sourcelink.json
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagement.Infrastructure\obj\Debug\net9.0\Hospital.04B4BFA6.Up2Date
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagement.Infrastructure\obj\Debug\net9.0\HospitalManagement.Infrastructure.dll
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagement.Infrastructure\obj\Debug\net9.0\refint\HospitalManagement.Infrastructure.dll
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagement.Infrastructure\obj\Debug\net9.0\HospitalManagement.Infrastructure.pdb
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagement.Infrastructure\obj\Debug\net9.0\ref\HospitalManagement.Infrastructure.dll

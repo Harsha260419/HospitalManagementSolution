@@ -10,12 +10,21 @@ namespace HospitalManagement.Infrastructure.Data
 {
     public class AppDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        public AppDbContext(DbContextOptions<AppDbContext> options)
+            : base(options)
         {
         }
 
         public DbSet<Doctor> Doctors { get; set; }
 
         public DbSet<Patient> Patients { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Doctor>()
+                .HasMany<Patient>()
+                .WithOne()
+                .HasForeignKey(p => p.DoctorId);
+        }
     }
 }

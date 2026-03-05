@@ -1,20 +1,24 @@
-﻿using HospitalManagement.Application.Services;
+﻿using Microsoft.Extensions.Configuration;
+using HospitalManagement.Application.Services;
 using HospitalManagement.Domain.Entities;
-using HospitalManagement.Infrastructure.Logging;
 using HospitalManagement.Infrastructure.Repositories;
+using HospitalManagement.Infrastructure.Logging;
 
 namespace HospitalManagement.ConsoleApp
 {
     class Program
     {
-        static DoctorRepositoryMemory doctorRepo = new DoctorRepositoryMemory();
-        static PatientRepositoryMemory patientRepo = new PatientRepositoryMemory();
-
-        static DoctorService doctorService = new DoctorService(doctorRepo);
-        static PatientService patientService = new PatientService(patientRepo, doctorRepo);
-
         static void Main()
         {
+            string connectionString =
+    "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=appdb;Integrated Security=True;TrustServerCertificate=True";
+
+            var doctorRepo = new DoctorRepositoryADO(connectionString);
+            var patientRepo = new PatientRepositoryADO(connectionString);
+
+            DoctorService doctorService = new DoctorService(doctorRepo);
+            PatientService patientService = new PatientService(patientRepo, doctorRepo);
+
             while (true)
             {
                 Console.WriteLine("\nHospital Management");
@@ -31,19 +35,19 @@ namespace HospitalManagement.ConsoleApp
                     switch (choice)
                     {
                         case 1:
-                            AddDoctor();
+                            AddDoctor(doctorService);
                             break;
 
                         case 2:
-                            ListDoctors();
+                            ListDoctors(doctorService);
                             break;
 
                         case 3:
-                            AddPatient();
+                            AddPatient(patientService);
                             break;
 
                         case 4:
-                            ListPatients();
+                            ListPatients(patientService);
                             break;
 
                         case 5:
@@ -58,7 +62,7 @@ namespace HospitalManagement.ConsoleApp
             }
         }
 
-        static void AddDoctor()
+        static void AddDoctor(DoctorService doctorService)
         {
             Doctor doctor = new Doctor();
 
@@ -76,7 +80,7 @@ namespace HospitalManagement.ConsoleApp
             Console.WriteLine("Doctor Added.");
         }
 
-        static void ListDoctors()
+        static void ListDoctors(DoctorService doctorService)
         {
             var doctors = doctorService.GetDoctors();
 
@@ -86,7 +90,7 @@ namespace HospitalManagement.ConsoleApp
             }
         }
 
-        static void AddPatient()
+        static void AddPatient(PatientService patientService)
         {
             Patient patient = new Patient();
 
@@ -109,7 +113,7 @@ namespace HospitalManagement.ConsoleApp
             Console.WriteLine("Patient Added.");
         }
 
-        static void ListPatients()
+        static void ListPatients(PatientService patientService)
         {
             var patients = patientService.GetPatients();
 

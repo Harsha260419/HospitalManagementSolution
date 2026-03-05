@@ -1,0 +1,15 @@
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagementSolution\bin\Debug\net9.0\HospitalManagement.Domain.deps.json
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagementSolution\bin\Debug\net9.0\HospitalManagement.Domain.runtimeconfig.json
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagementSolution\bin\Debug\net9.0\HospitalManagement.Domain.dll
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagementSolution\bin\Debug\net9.0\HospitalManagement.Domain.pdb
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagementSolution\obj\Debug\net9.0\HospitalManagement.Domain.csproj.AssemblyReference.cache
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagementSolution\obj\Debug\net9.0\HospitalManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagementSolution\obj\Debug\net9.0\HospitalManagement.Domain.AssemblyInfoInputs.cache
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagementSolution\obj\Debug\net9.0\HospitalManagement.Domain.AssemblyInfo.cs
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagementSolution\obj\Debug\net9.0\HospitalManagement.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagementSolution\obj\Debug\net9.0\HospitalManagement.Domain.sourcelink.json
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagementSolution\obj\Debug\net9.0\HospitalManagement.Domain.dll
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagementSolution\obj\Debug\net9.0\refint\HospitalManagement.Domain.dll
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagementSolution\obj\Debug\net9.0\HospitalManagement.Domain.pdb
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagementSolution\obj\Debug\net9.0\HospitalManagement.Domain.genruntimeconfig.cache
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagementSolution\obj\Debug\net9.0\ref\HospitalManagement.Domain.dll
