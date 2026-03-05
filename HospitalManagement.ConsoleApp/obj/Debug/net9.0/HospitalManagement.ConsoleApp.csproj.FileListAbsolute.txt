@@ -80,3 +80,4 @@ C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagement.C
 C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagement.ConsoleApp\obj\Debug\net9.0\HospitalManagement.ConsoleApp.pdb
 C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagement.ConsoleApp\obj\Debug\net9.0\HospitalManagement.ConsoleApp.genruntimeconfig.cache
 C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagement.ConsoleApp\obj\Debug\net9.0\ref\HospitalManagement.ConsoleApp.dll
+C:\Users\Harsha Sai\source\repos\HospitalManagementSolution\HospitalManagement.ConsoleApp\bin\Debug\net9.0\appsettings.json

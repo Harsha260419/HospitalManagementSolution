@@ -1,8 +1,13 @@
-﻿using Microsoft.Extensions.Configuration;
-using HospitalManagement.Application.Services;
+﻿using HospitalManagement.Application.Services;
 using HospitalManagement.Domain.Entities;
-using HospitalManagement.Infrastructure.Repositories;
+using HospitalManagement.Domain.Interfaces;
+using HospitalManagement.Infrastructure.Data;
 using HospitalManagement.Infrastructure.Logging;
+using HospitalManagement.Infrastructure.Repositories;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer;
 
 namespace HospitalManagement.ConsoleApp
 {
@@ -10,59 +15,34 @@ namespace HospitalManagement.ConsoleApp
     {
         static void Main()
         {
-            string connectionString =
-    "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=appdb;Integrated Security=True;TrustServerCertificate=True";
+            var config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
 
-            var doctorRepo = new DoctorRepositoryADO(connectionString);
-            var patientRepo = new PatientRepositoryADO(connectionString);
+            string connectionString = config.GetConnectionString("DefaultConnection");
 
-            DoctorService doctorService = new DoctorService(doctorRepo);
-            PatientService patientService = new PatientService(patientRepo, doctorRepo);
+            var services = new ServiceCollection();
 
-            while (true)
-            {
-                Console.WriteLine("\nHospital Management");
-                Console.WriteLine("1 Add Doctor");
-                Console.WriteLine("2 List Doctors");
-                Console.WriteLine("3 Add Patient");
-                Console.WriteLine("4 List Patients");
-                Console.WriteLine("5 Exit");
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(connectionString));
 
-                int choice = Convert.ToInt32(Console.ReadLine());
+            services.AddScoped<IRepository<Doctor>, DoctorRepositoryEF>();
+            services.AddScoped<IRepository<Patient>, PatientRepositoryEF>();
 
-                try
-                {
-                    switch (choice)
-                    {
-                        case 1:
-                            AddDoctor(doctorService);
-                            break;
+            services.AddScoped<IDoctorService, DoctorService>();
+            services.AddScoped<IPatientService, PatientService>();
 
-                        case 2:
-                            ListDoctors(doctorService);
-                            break;
+            var serviceProvider = services.BuildServiceProvider();
 
-                        case 3:
-                            AddPatient(patientService);
-                            break;
+            var doctorService = serviceProvider.GetService<IDoctorService>();
+            var patientService = serviceProvider.GetService<IPatientService>();
 
-                        case 4:
-                            ListPatients(patientService);
-                            break;
-
-                        case 5:
-                            return;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Logger.Log(ex);
-                    Console.WriteLine(ex.Message);
-                }
-            }
+            RunMenu(doctorService, patientService);
         }
 
-        static void AddDoctor(DoctorService doctorService)
+
+        static void AddDoctor(IDoctorService doctorService)
         {
             Doctor doctor = new Doctor();
 
@@ -80,17 +60,17 @@ namespace HospitalManagement.ConsoleApp
             Console.WriteLine("Doctor Added.");
         }
 
-        static void ListDoctors(DoctorService doctorService)
+        static void ListDoctors(IDoctorService doctorService)
         {
             var doctors = doctorService.GetDoctors();
 
             foreach (var d in doctors)
             {
-                Console.WriteLine($"{d.DoctorId} {d.Name} {d.Specialization} ₹{d.ConsultationFee:F2}");
+                Console.WriteLine($"{d.DoctorId} {d.Name} {d.Specialization} Rs. {d.ConsultationFee}");
             }
         }
 
-        static void AddPatient(PatientService patientService)
+        static void AddPatient(IPatientService patientService)
         {
             Patient patient = new Patient();
 
@@ -113,13 +93,50 @@ namespace HospitalManagement.ConsoleApp
             Console.WriteLine("Patient Added.");
         }
 
-        static void ListPatients(PatientService patientService)
+        static void ListPatients(IPatientService patientService)
         {
             var patients = patientService.GetPatients();
 
             foreach (var p in patients)
             {
                 Console.WriteLine($"{p.PatientId} {p.Name} {p.Condition}");
+            }
+        }
+        static void RunMenu(IDoctorService doctorService, IPatientService patientService)
+        {
+            while (true)
+            {
+                Console.WriteLine("\nHospital Management");
+                Console.WriteLine("1 Add Doctor");
+                Console.WriteLine("2 List Doctors");
+                Console.WriteLine("3 Add Patient");
+                Console.WriteLine("4 List Patients");
+                Console.WriteLine("5 Exit");
+
+                int choice = Convert.ToInt32(Console.ReadLine());
+
+                switch (choice)
+                {
+                    case 1:
+                        AddDoctor(doctorService);
+                        break;
+
+                    case 2:
+                        ListDoctors(doctorService);
+                        break;
+
+                    case 3:
+                        AddPatient(patientService);
+                        break;
+
+                    case 4:
+                        ListPatients(patientService);
+                        break;
+
+                    case 5:
+                        Console.WriteLine("Exiting program...");
+                        return;
+                }
             }
         }
     }

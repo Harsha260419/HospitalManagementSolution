@@ -3161,7 +3161,8 @@
   },
   "projectFileDependencyGroups": {
     "net9.0": [
-      "HospitalManagement.Application >= 1.0.0"
+      "HospitalManagement.Application >= 1.0.0",
+      "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.0"
     ]
   },
   "packageFolders": {
@@ -3217,6 +3218,12 @@
     "frameworks": {
       "net9.0": {
         "targetAlias": "net9.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.SqlServer": {
+            "target": "Package",
+            "version": "[9.0.0, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
